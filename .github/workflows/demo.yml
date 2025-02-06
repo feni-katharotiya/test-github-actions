@@ -18,7 +18,7 @@ jobs:
         run: echo "This is a sample file" > sample.txt
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4.6.0
+        uses: actions/upload-artifact@v2  # Make sure this is correct version (v2 is latest for upload)
         with:
           name: sample-artifact
           path: sample.txt
@@ -29,10 +29,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Download artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3  # Updated to v3
         with:
           name: sample-artifact
           path: ./downloaded-artifacts
 
       - name: Deploy artifact
-        run: echo "Deploying artifact" && cat ./downloaded-artifacts/sample.txt
+        run: |
+          echo "Deploying artifact"
+          cat ./downloaded-artifacts/sample.txt
