@@ -1,9 +1,11 @@
 name : demo-actions
 
 on: 
-  push:
-    branches: master
-
+  # push:
+  #   branches: master
+  issues:
+    types: [opened]
+    
   workflow_dispatch: 
 
 jobs:
