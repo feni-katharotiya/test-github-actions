@@ -15,6 +15,11 @@ jobs:
       - uses: actions/checkout@v4.2.2
       - name: run a sample job
         run: echo Hello World
-      
+
+     - name: Upload artifactes 
+       uses: actions/upload-artifact@v4
+       with:
+         name: build-artifact
+         path: ${{github.workspace}} # or path/to/artifact
   
     
