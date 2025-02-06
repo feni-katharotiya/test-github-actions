@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows
+    runs-on: ubantu-latest
     steps:
       - uses: actions/checkout@v4.2.2
       - name: run a sample job
