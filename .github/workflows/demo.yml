@@ -1,24 +1,24 @@
-name : demo-actions
+name: demo-action
 
-on: 
-  # push:
-  #   branches: master
-  issues:
-    types: [opened]
-    
-  workflow_dispatch: 
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.2.2
-      - name: run a sample job
-        run: echo Hello World
-     -  name: Upload artifactes 
-        uses: actions/upload-artifact@v4
+      - uses: actions/checkout@v2  # Correct version for checkout
+      - name: Run as sample job
+        run: echo "This is a sample job running after code checkout"
+
+      - name: Create a sample file
+        run: echo "This is a sample file" > sample.txt
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4.6.0
         with:
-         name: build-artifact
-         path: ${{github.workspace}} # or path/to/artifact
-  
-    
+          name: sample-artifact
+          path: sample.txt
